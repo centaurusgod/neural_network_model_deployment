@@ -84,12 +84,16 @@ class NodeDeviceAPIView(APIView):
                 status_detail = get_object_or_404(BirdsStatus, status_code=bird_detail.status_code.status_code)
                 status_code=status_detail.status_code
                 status_name=status_detail.status_name
+                #uncomment the following when communication with node devices
+                #i am sending only the predicted class label without sending bird detail which requires having database
+                #of birds detail so
                 data = {
-                    'status_code':status_code,
-                    'status_name':status_name,
-                    'common_name': bird_detail.common_name,
-                    'scientific_name': bird_detail.scientific_name,
-                    'birds_description': bird_detail.birds_description
+                    #'status_code':status_code,
+                    #'status_name':status_name,
+                    # 'common_name': bird_detail.common_name,
+                    # 'scientific_name': bird_detail.scientific_name,
+                    # 'birds_description': bird_detail.birds_description
+                    'scientific_name':predicted_class_label
                 }
                 
                 return Response(data)
