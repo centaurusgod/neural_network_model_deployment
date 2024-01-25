@@ -16,6 +16,22 @@ Welcome to the Bird Classification Model project! This project leverages a Convo
 - TensorFlow 2.10.0
 
 ## Setting up the Environment
+Note that you need to change settings.py to use different database like inbuilt sqllite database provided by django. 
+The following is what database part in my settings.py looks like. Ask chatgpt and modify to default django sqlllite if needed. 
+The API to get bird detail is already made but commented just to return scientific name of the image provided by any devices. 
+One can modify the code accordingly and use as per their use. Go to birdwatch/mlapi/views.py to get more insights. 
+One might also need to make some database migrations to make this code functional. Refer to ChatGPT for that.
+```bash
+DATABASES = {
+    'default': {
+        'ENGINE': 'mysql.connector.django',
+        'NAME': 'birdwatch',    # Your MySQL database name
+        'USER': 'root',     # Your MySQL username
+        'PASSWORD': '',     # Your MySQL password
+        'HOST': 'localhost',
+        'PORT': '3306',     # Default MySQL port
+    }
+}
 
 1. Create a virtual environment with Python 3.8.0:
    ```bash
@@ -113,3 +129,6 @@ The model can predict the following bird classes:
    ```bash
    http://localhost:8000/classify_image
 Happy bird watching! 🐦🔍
+
+## Extras
+1. 
