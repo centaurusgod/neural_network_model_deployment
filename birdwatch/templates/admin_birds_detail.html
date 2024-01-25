@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+</head>
+<body>
+    <div>
+        <h1>Admin View Birds Detail</h1>
+        <a href="{% url 'admin_add_birds_detail' %}">
+            <button>Add More Birds</button>
+        </a>
+    </div>
+
+    <ul id="memberList"></ul>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Make an API call to retrieve data
+            fetch('http://localhost:8000/api/birds_detail')
+                .then(response => response.json())
+                .then(data => {
+                    // Update HTML with the retrieved data
+                    const memberList = document.getElementById('memberList');
+
+                    data.message.forEach(member => {
+                        const listItem = document.createElement('li');
+                        listItem.innerHTML = `
+                            <strong>Common Name:</strong> ${member.common_name}<br>
+                            <strong>Scientific Name:</strong> ${member.scientific_name}<br>
+                            <strong>Birds Description:</strong> ${member.birds_description}<br>
+                            <strong>Birds Image:</strong> <img src="${member.birds_image}" alt="Bird Image"><br>
+                            <strong>Status Code:</strong> ${member.status_code}
+                        `;
+                        memberList.appendChild(listItem);
+                    });
+                })
+                .catch(error => console.error('Error fetching data:', error));
+        });
+    </script>
+</body>
+</html>

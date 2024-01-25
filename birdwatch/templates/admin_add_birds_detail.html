@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Bird Form</title>
+</head>
+
+<body>
+
+    <form id="addBirdsDetailForm" enctype="multipart/form-data">
+        {% csrf_token %} 
+        <span>
+            <strong>Status Code:</strong>
+            <input required type="text" value='EN' name="status_code" placeholder="status_code">
+        </span>
+        <br>
+        <br>
+        <span>
+            <strong>Common Name:</strong>
+            <input required value='test_case' type="text" name="common_name" placeholder="common_name">
+        </span>
+        <br>
+        <br>
+        <span>
+            <strong>Scientific Name:</strong>
+            <input required value='test_case' type="text" name="scientific_name" placeholder="scientific_name">
+        </span>
+        <br>
+        <br>
+        <span>
+            <strong>Birds Description:</strong>
+            <input required value='test_case' type="text" name="birds_description" placeholder="birds_description">
+        </span>
+        <br>
+        <br>
+        <span>
+            <label for="imageInput">Select an image:</label>
+            <input required name="birds_image" type="file" id="imageInput" accept="image/*">
+        </span>
+
+        <br>
+        <br>
+        <button type="submit">Add Bird</button>
+    </form>
+
+    <script>
+        document.getElementById('addBirdsDetailForm').addEventListener('submit', function (event) {
+            event.preventDefault();
+    
+            // Gather form data
+            const formData = new FormData(this);
+    
+            // Get CSRF token from cookies
+            const csrftoken = document.cookie.match(/csrftoken=([^ ;]+)/)[1];
+    
+            // Make an API call to post data
+            fetch('http://localhost:8000/api/birds_detail', {
+                method: 'POST',
+                headers: {
+                    'X-CSRFToken': csrftoken, // Include CSRF token in headers
+                },
+                body: formData,
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log('Data posted successfully:', data);
+                console.log(formData)
+                // You can handle the response as needed
+                //window.location.href = "{% url 'admin_add_birds_detail' %}";
+            })
+            .catch(error => console.error('Error posting data:', error));
+        });
+    </script>
+    
+
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+</head>
+<body>
+   <span>
+    <h1>Admin View</h1>
+   <a href="{% url 'admin_add_birds_status' %}">
+    <button>Add More Status</button>
+   </a>
+   </span>
+    <ul id="memberList"></ul>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Make an API call to retrieve data
+            fetch('http://localhost:8000/api/')
+                .then(response => response.json())
+                .then(data => {
+                    // Update HTML with the retrieved data
+                    const memberList = document.getElementById('memberList');
+                    
+                    data.message.forEach(member => {
+                        const listItem = document.createElement('li');
+                        listItem.textContent = `Status Code: ${member.status_code}, Status Name: ${member.status_name}`;
+                        memberList.appendChild(listItem);
+                    });
+                })
+                .catch(error => console.error('Error fetching data:', error));
+        });
+    </script>
+</body>
+</html>

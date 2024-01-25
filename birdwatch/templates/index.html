@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Picker</title>
+</head>
+
+<body>
+    <form id="imageForm" method="POST" action="{% url 'index' %}" enctype="multipart/form-data">
+        {% csrf_token %}
+        <ul>
+            <li>
+                <label for="imageInput">Select an image:</label>
+                <input name="image" type="file" id="imageInput" accept="image/*">
+            </li>
+            <li>
+                <button type="submit">Submit</button>
+            </li>
+        </ul>
+    </form>
+
+    <strong>
+        Predicted Class Label: 
+    </strong>
+
+    <script>
+        function submitForm() {
+            var fileInput = document.getElementById('imageInput');
+            var selectedFile = fileInput.files[0];
+
+            if (selectedFile) {
+                // You can perform actions with the selected file here
+                
+            } else {
+                alert('Please select an image.');
+            }
+        }
+    </script>
+</body>
+
+</html>

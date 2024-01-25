@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Bird Form</title>
+</head>
+
+<body>
+
+    <form id="addBirdForm">
+        {% csrf_token %} 
+        <span>
+            <strong>Status Code:</strong>
+            <input required type="text" name="status_code" placeholder="status_code">
+        </span>
+        <br>
+        <span>
+            <strong>Status Name:</strong>
+            <input required type="text" name="status_name" placeholder="status_name">
+        </span>
+        <br>
+        <br>
+        <button type="submit">Add Bird</button>
+    </form>
+
+    <script>
+        document.getElementById('addBirdForm').addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            // Gather form data
+            const formData = new FormData(this);
+            const formDataObject = {};
+            formData.forEach((value, key) => {
+                formDataObject[key] = value;
+            });
+
+            // Get CSRF token from cookies
+            const csrftoken = document.cookie.match(/csrftoken=([^ ;]+)/)[1];
+
+            // Make an API call to post data
+            fetch('http://localhost:8000/api/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': csrftoken, // Include CSRF token in headers
+                },
+                body: JSON.stringify(formDataObject),
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log('Data posted successfully:', data);
+                // You can handle the response as needed
+                window.location.href = "{% url 'admin_birds_status' %}";
+            })
+            .catch(error => console.error('Error posting data:', error));
+        });
+    </script>
+
+</body>
+</html>
