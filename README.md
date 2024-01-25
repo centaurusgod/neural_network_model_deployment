@@ -45,10 +45,45 @@ Download the bird classification model `bird_classification_model.h5` from [Goog
 
 The model can predict the following bird classes:
 
-- Malacocincla abbotti
-- Dupetor flavicollis
-- Alcedo meninting
-- ...
+1. Malacocincla abbotti
+2. Dupetor flavicollis
+3. Alcedo meninting
+4. Pitta nipalensis
+5. Tickellia hodgsoni
+6. Catreus wallichii
+7. Lonchura atricapilla
+8. Aegypius monachus
+9. Stachyris chrysaea
+10. Brachypteryx stellata
+11. Botaurus stellaris
+12. Buceros bicornis
+13. Mulleripicus pulverulentus
+14. Ibidorhyncha struthersii
+15. Cursorius coromandelicus
+16. Grаminicolа bengalensis
+17. Caprimulgus asiaticus
+18. Sarkidiornis melanotos
+19. Anas acuta
+20. Mycteria leucocephala
+21. Cochoa purpurea
+22. Harpactes erythrocephalus
+23. Sarcogyps calvus
+24. Falco chicquera
+25. Anthreptes singalensis
+26. Actinodura egertoni
+27. Falco cherrug
+28. Leiothrix argentauris
+29. Rallina eurizonoides
+30. Bubo nipalensis
+31. Melanochlora sultanea
+32. Francolinus gularis
+33. Dumetia hyperythra
+34. Treron curvirostra
+35. Alophoixus flaveolus
+36. Saxicola insignis
+37. Indicator xanthonotus
+38. Phylloscopus cantator
+
 
 **Note:** For optimal results, it's suggested to use somewhat cropped images when providing input to the model.
 
