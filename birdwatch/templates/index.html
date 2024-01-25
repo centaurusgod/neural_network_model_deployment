@@ -16,13 +16,13 @@
                 <input name="image" type="file" id="imageInput" accept="image/*">
             </li>
             <li>
-                <button type="submit">Submit</button>
+                <button type="button" onclick="submitForm()">Submit</button>
             </li>
         </ul>
     </form>
 
     <strong>
-        Predicted Class Label: 
+        Predicted Scientific Name: <span id="scientificName"></span>
     </strong>
 
     <script>
@@ -32,7 +32,16 @@
 
             if (selectedFile) {
                 // You can perform actions with the selected file here
-                
+                // ...
+
+                // Mock response for testing
+                var response = {
+                    "scientific_name": "Ibidorhyncha struthersii",
+                };
+
+                // Update the HTML element with the API response
+                document.getElementById('scientificName').innerText = response.scientific_name;
+
             } else {
                 alert('Please select an image.');
             }
