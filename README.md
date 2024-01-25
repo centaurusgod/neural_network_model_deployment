@@ -108,4 +108,8 @@ The model can predict the following bird classes:
 
 4. Access the application from any device on the local network using the provided IP address. Remember to update the API requests in HTML files and JavaScript to use the relevant IP address instead of localhost.
 
+## To Test Model's Prediction
+1. Go to
+   ```bash
+   http://localhost:8000/classify_image
 Happy bird watching! 🐦🔍
