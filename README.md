@@ -2,6 +2,18 @@
 
 Welcome to the Bird Classification Model project! This project leverages a Convolutional Neural Network (CNN) to accurately classify bird images. Below are the details on setting up the project and utilizing the model.
 
+# Whole Project Structure
+
+**Traning**:
+[Deep Learning Model Training Toolkit](https://github.com/centaurusgod/DeepLearningModelTrainingToolkit)
+
+**Model Deployment**:
+[CNN Model Deployment](https://github.com/centaurusgod/CNN.ModelDeployment)
+
+**Mobile Application**:
+[Django Bird Classifier](https://github.com/centaurusgod/DjangoBirdClassifier)
+
+
 ## Requirements
 
 - Python 3.8.18
